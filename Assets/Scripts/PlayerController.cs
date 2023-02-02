@@ -9,8 +9,8 @@ public class PlayerController : MonoBehaviour
     private float strafe;
     [SerializeField] float jumpForce = 2;
     [SerializeField] float speed = 10.0f;
-    //public GameObject projectilePrefab;
-    //public Transform projectileSpawnPoint;
+    public GameObject projectilePrefab;
+    public Transform projectileSpawnPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +36,11 @@ public class PlayerController : MonoBehaviour
         {
             // Jump
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Instantiate(projectilePrefab, projectileSpawnPoint.position, projectilePrefab.transform.rotation);
         }
     }
 
